@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Star } from "lucide-react";
 import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { STUDIO, EVENTS, PHOTOS } from "@/lib/mock/data";
@@ -114,7 +115,7 @@ function Studio() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {STUDIO.reviews.map((r) => (
               <div key={r.name} className="bg-cream rounded-[2rem] p-8">
-                <div className="text-amber-500 mb-3">{"★".repeat(r.rating)}</div>
+                <div className="flex gap-0.5 text-amber-500 mb-3">{Array.from({ length: r.rating }).map((_, i) => (<Star key={i} className="w-4 h-4 fill-current" />))}</div>
                 <p className="font-serif italic text-lg mb-4">"{r.text}"</p>
                 <div className="text-sm font-bold">{r.name}</div>
               </div>

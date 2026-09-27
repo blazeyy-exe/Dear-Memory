@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Check } from "lucide-react";
 import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
@@ -71,7 +72,7 @@ function Pricing() {
               <ul className="space-y-3 text-sm">
                 {t.features.map((f) => (
                   <li key={f} className="flex items-center gap-3">
-                    <span className={`w-5 h-5 rounded-full grid place-items-center text-xs ${t.featured ? "bg-white/20" : "bg-emerald/10 text-emerald"}`}>✓</span>
+                    <span className={`w-5 h-5 rounded-full grid place-items-center ${t.featured ? "bg-white/20" : "bg-emerald/10 text-emerald"}`}><Check className="w-3 h-3" strokeWidth={3} /></span>
                     {f}
                   </li>
                 ))}

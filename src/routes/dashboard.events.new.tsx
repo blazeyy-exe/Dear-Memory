@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/app/AppShell";
 import { EVENT_TYPES, TEMPLATES } from "@/lib/mock/data";
 import { useState } from "react";
+import { ArrowLeft, ArrowRight, PartyPopper, Upload } from "lucide-react";
 
 export const Route = createFileRoute("/dashboard/events/new")({
   head: () => ({ meta: [{ title: "New event — DearMemory" }] }),
@@ -43,7 +44,7 @@ function NewEvent() {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {EVENT_TYPES.map((t) => (
                 <button key={t.type} className={`${t.color} rounded-3xl p-6 text-left hover:-translate-y-1 transition-transform`}>
-                  <div className="text-3xl mb-3">{t.emoji}</div>
+                  <t.icon className="w-7 h-7 mb-3 text-foreground/75" />
                   <div className="font-bold">{t.type}</div>
                   <div className="text-xs text-warm-gray mt-1">{t.description}</div>
                 </button>
@@ -75,7 +76,7 @@ function NewEvent() {
             <h2 className="text-2xl font-bold mb-2">Upload your photos</h2>
             <p className="text-warm-gray mb-8">Drag a folder here or click to browse. RAW and JPEG welcome.</p>
             <div className="border-2 border-dashed border-emerald/30 bg-emerald-light/30 rounded-[2rem] p-16 text-center">
-              <div className="w-16 h-16 rounded-full bg-white grid place-items-center text-3xl mx-auto mb-4 shadow-sm">↑</div>
+              <div className="w-16 h-16 rounded-full bg-white grid place-items-center text-emerald mx-auto mb-4 shadow-sm"><Upload className="w-6 h-6" /></div>
               <div className="font-bold mb-2">Drop photos here</div>
               <div className="text-sm text-warm-gray mb-6">or click to browse</div>
               <button className="bg-emerald text-white px-6 py-3 rounded-full font-bold hover:bg-emerald-deep">Choose files</button>
@@ -115,7 +116,7 @@ function NewEvent() {
 
         {step === 4 && (
           <div className="text-center py-12">
-            <div className="w-20 h-20 rounded-full bg-emerald-light grid place-items-center text-4xl mx-auto mb-6">🎉</div>
+            <div className="w-20 h-20 rounded-full bg-emerald-light grid place-items-center text-emerald-deep mx-auto mb-6"><PartyPopper className="w-9 h-9" /></div>
             <h2 className="text-3xl font-bold mb-3">Ready to publish</h2>
             <p className="text-warm-gray max-w-md mx-auto mb-8">Your event website is one click away. You can keep editing afterward — nothing is permanent.</p>
             <button className="bg-emerald text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-emerald-deep">Publish event</button>
@@ -123,9 +124,9 @@ function NewEvent() {
         )}
 
         <div className="flex justify-between mt-12 pt-6 border-t border-border">
-          <button onClick={() => setStep(Math.max(0, step - 1))} disabled={step === 0} className="px-5 py-2.5 rounded-full text-sm font-semibold text-warm-gray disabled:opacity-40 hover:bg-cream">← Back</button>
+          <button onClick={() => setStep(Math.max(0, step - 1))} disabled={step === 0} className="inline-flex items-center gap-1 px-5 py-2.5 rounded-full text-sm font-semibold text-warm-gray disabled:opacity-40 hover:bg-cream"><ArrowLeft className="w-4 h-4" /> Back</button>
           {step < STEPS.length - 1 && (
-            <button onClick={() => setStep(step + 1)} className="bg-emerald text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-emerald-deep">Continue →</button>
+            <button onClick={() => setStep(step + 1)} className="inline-flex items-center gap-1 bg-emerald text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-emerald-deep">Continue <ArrowRight className="w-4 h-4" /></button>
           )}
         </div>
       </div>

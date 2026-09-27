@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Upload } from "lucide-react";
 import { AppShell } from "@/components/app/AppShell";
 import { PHOTOS } from "@/lib/mock/data";
 
@@ -22,7 +23,7 @@ function Media() {
       action={
         <div className="flex gap-2">
           <button className="bg-white ring-1 ring-border px-4 py-2 rounded-full text-sm font-semibold">+ Folder</button>
-          <button className="bg-emerald text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-emerald-deep">↑ Upload</button>
+          <button className="inline-flex items-center gap-1.5 bg-emerald text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-emerald-deep"><Upload className="w-4 h-4" /> Upload</button>
         </div>
       }
     >

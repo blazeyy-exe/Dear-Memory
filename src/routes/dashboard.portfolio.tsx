@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { GripVertical } from "lucide-react";
 import { AppShell } from "@/components/app/AppShell";
 import { STUDIO, PHOTOS } from "@/lib/mock/data";
 
@@ -27,7 +28,7 @@ function Portfolio() {
           <div className="space-y-1 text-sm">
             {SECTIONS.map((s, i) => (
               <div key={s} className={`flex items-center gap-2 px-3 py-2 rounded-xl cursor-pointer ${i === 0 ? "bg-emerald-light text-emerald-deep font-semibold" : "hover:bg-cream"}`}>
-                <span className="text-warm-gray text-xs">⋮⋮</span>
+                <GripVertical className="w-3.5 h-3.5 shrink-0 text-warm-gray" />
                 {s}
               </div>
             ))}

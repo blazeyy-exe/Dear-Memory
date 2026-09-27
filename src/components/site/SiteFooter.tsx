@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { BrandIcon } from "./BrandIcon";
 
 export function SiteFooter() {
   return (
@@ -6,9 +7,9 @@ export function SiteFooter() {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
           <div className="max-w-xs">
-            <div className="text-xl font-bold tracking-tight text-emerald mb-4 flex items-center gap-2">
-              <span className="inline-block w-5 h-5 rounded-full bg-emerald" />
-              DearMemory
+            <div className="text-xl font-bold tracking-tight text-emerald mb-4 flex items-center gap-2.5">
+              <BrandIcon className="w-5 h-5 rounded-[6px] shrink-0 shadow-sm" />
+              <span>DearMemory</span>
             </div>
             <p className="text-sm text-warm-gray">
               Helping studios worldwide turn moments into lasting digital experiences since 2024.

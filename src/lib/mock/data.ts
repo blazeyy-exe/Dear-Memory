@@ -1,17 +1,20 @@
 // Mock data for the DearMemory prototype. No backend; everything lives here.
 
+import { Building2, Cake, GraduationCap, Heart, Mic, Trophy } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
 export const PHOTOS = {
   weddingHero: "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80&auto=format&fit=crop",
   weddingCouple: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=900&q=80&auto=format&fit=crop",
   weddingDetails: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=900&q=80&auto=format&fit=crop",
   weddingFlowers: "https://images.unsplash.com/photo-1525772764200-be829a350797?w=900&q=80&auto=format&fit=crop",
   weddingDance: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=900&q=80&auto=format&fit=crop",
-  graduation: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&q=80&auto=format&fit=crop",
+  graduation: "https://images.unsplash.com/photo-1599943821034-8cb5c7526922?w=1200&q=80&auto=format&fit=crop",
   graduationGroup: "https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=900&q=80&auto=format&fit=crop",
   concert: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=1200&q=80&auto=format&fit=crop",
   concertCrowd: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=900&q=80&auto=format&fit=crop",
   birthday: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=900&q=80&auto=format&fit=crop",
-  corporate: "https://images.unsplash.com/photo-1511795409834-432f7b1728f2?w=900&q=80&auto=format&fit=crop",
+  corporate: "https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?w=900&q=80&auto=format&fit=crop",
   sports: "https://images.unsplash.com/photo-1517649763962-0c623066013b?w=900&q=80&auto=format&fit=crop",
   portfolio1: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=900&q=80&auto=format&fit=crop",
   portfolio2: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=900&q=80&auto=format&fit=crop",
@@ -19,17 +22,23 @@ export const PHOTOS = {
   team1: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80&auto=format&fit=crop",
   team2: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80&auto=format&fit=crop",
   team3: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80&auto=format&fit=crop",
+  portrait1: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80&auto=format&fit=crop",
+  portrait2: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&q=80&auto=format&fit=crop",
+  portrait3: "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?w=800&q=80&auto=format&fit=crop",
+  portrait4: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80&auto=format&fit=crop",
+  portrait5: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=800&q=80&auto=format&fit=crop",
+  portrait6: "https://images.unsplash.com/photo-1546456073-6712f79251bb?w=800&q=80&auto=format&fit=crop",
 };
 
 export type EventType = "Wedding" | "Graduation" | "Concert" | "Corporate" | "Birthday" | "Sports";
 
-export const EVENT_TYPES: { type: EventType; emoji: string; color: string; description: string }[] = [
-  { type: "Wedding", emoji: "💍", color: "bg-emerald-light", description: "Forever moments, beautifully kept." },
-  { type: "Graduation", emoji: "🎓", color: "bg-sky", description: "A milestone worth celebrating." },
-  { type: "Concert", emoji: "🎤", color: "bg-lavender", description: "Energy captured in every frame." },
-  { type: "Corporate", emoji: "🏢", color: "bg-cream", description: "Brand stories, told beautifully." },
-  { type: "Birthday", emoji: "🎂", color: "bg-blush", description: "Joy worth remembering." },
-  { type: "Sports", emoji: "🏆", color: "bg-emerald-light", description: "Victory in motion." },
+export const EVENT_TYPES: { type: EventType; icon: LucideIcon; color: string; description: string }[] = [
+  { type: "Wedding", icon: Heart, color: "bg-emerald-light", description: "Forever moments, beautifully kept." },
+  { type: "Graduation", icon: GraduationCap, color: "bg-sky", description: "A milestone worth celebrating." },
+  { type: "Concert", icon: Mic, color: "bg-lavender", description: "Energy captured in every frame." },
+  { type: "Corporate", icon: Building2, color: "bg-cream", description: "Brand stories, told beautifully." },
+  { type: "Birthday", icon: Cake, color: "bg-blush", description: "Joy worth remembering." },
+  { type: "Sports", icon: Trophy, color: "bg-emerald-light", description: "Victory in motion." },
 ];
 
 export interface MockEvent {
@@ -93,6 +102,154 @@ export const LEADS: Lead[] = [
   { id: "l4", name: "Maya & Theo", event: "Engagement Shoot", source: "Google", status: "Booked", budget: "$1.2k", date: "Last week" },
   { id: "l5", name: "Forge Industries", event: "Corporate Gala", source: "LinkedIn", status: "New", budget: "$6k", date: "Today" },
   { id: "l6", name: "Olive's Family", event: "Birthday party", source: "Word of mouth", status: "Booked", budget: "$800", date: "Last week" },
+];
+
+export interface DiscoverProfile {
+  id: string;
+  slug: string;
+  name: string;
+  role: string;
+  specialty: string;
+  location: string;
+  description: string;
+  budget: string;
+  yearsExperience: number;
+  rating: number;
+  reviewCount: number;
+  services: string[];
+  availability: string;
+  image: string;
+}
+
+export const DISCOVER_PROFILES: DiscoverProfile[] = [
+  {
+    id: "p1",
+    slug: "goldenhour",
+    name: "Goldenhour Studio",
+    role: "Wedding & event photography studio",
+    specialty: "Weddings",
+    location: "Lisbon, PT",
+    description: "Documentary wedding coverage with warm, editorial tones across Portugal and Spain.",
+    budget: "$3,200",
+    yearsExperience: 8,
+    rating: 4.9,
+    reviewCount: 127,
+    services: ["Weddings", "Engagements", "Albums", "Second shooter"],
+    availability: "Booking Sept 2026",
+    image: PHOTOS.weddingCouple,
+  },
+  {
+    id: "p2",
+    slug: "noise-and-light",
+    name: "Noise & Light Studio",
+    role: "Concert and festival photographers",
+    specialty: "Concerts",
+    location: "Berlin, DE",
+    description: "High-volume live music coverage with same-night delivery for touring artists.",
+    budget: "$5,400",
+    yearsExperience: 11,
+    rating: 4.8,
+    reviewCount: 94,
+    services: ["Concerts", "Tour coverage", "Video", "Same-day editing"],
+    availability: "Limited dates",
+    image: PHOTOS.portrait1,
+  },
+  {
+    id: "p3",
+    slug: "avery-and-co",
+    name: "Avery & Co.",
+    role: "Boutique bridal photographer",
+    specialty: "Weddings",
+    location: "Brooklyn, NY",
+    description: "Intimate, heirloom-style wedding storytelling for small city celebrations.",
+    budget: "$1,800",
+    yearsExperience: 5,
+    rating: 4.9,
+    reviewCount: 68,
+    services: ["Weddings", "Elopements", "Bridal portraits"],
+    availability: "Booking now",
+    image: PHOTOS.portrait2,
+  },
+  {
+    id: "p4",
+    slug: "north-frame",
+    name: "North Frame Collective",
+    role: "Corporate & brand storytellers",
+    specialty: "Corporate",
+    location: "Toronto, CA",
+    description: "Conference, keynote, and brand campaign coverage with a clean editorial look.",
+    budget: "$6,800",
+    yearsExperience: 9,
+    rating: 4.7,
+    reviewCount: 51,
+    services: ["Corporate", "Headshots", "Brand campaigns", "Event recaps"],
+    availability: "Booking Oct 2026",
+    image: PHOTOS.portrait3,
+  },
+  {
+    id: "p5",
+    slug: "milestone-photography",
+    name: "Milestone Photography",
+    role: "Graduation & family portraits",
+    specialty: "Graduation",
+    location: "Austin, TX",
+    description: "Campus sessions and full commencement days for schools, groups, and families.",
+    budget: "$2,600",
+    yearsExperience: 6,
+    rating: 4.8,
+    reviewCount: 142,
+    services: ["Graduation", "Group shoots", "Family portraits", "Print packages"],
+    availability: "Spring dates open",
+    image: PHOTOS.graduationGroup,
+  },
+  {
+    id: "p6",
+    slug: "saffron-lens",
+    name: "Saffron Lens",
+    role: "Multicultural wedding specialist",
+    specialty: "Weddings",
+    location: "Nairobi, KE",
+    description: "Full-weekend celebrations, traditional ceremonies, and destination weddings.",
+    budget: "$9,800",
+    yearsExperience: 12,
+    rating: 5,
+    reviewCount: 73,
+    services: ["Weddings", "Destination", "Cultural ceremonies", "Same-day slideshow"],
+    availability: "Booking 2027",
+    image: PHOTOS.portrait4,
+  },
+  {
+    id: "p7",
+    slug: "studio-verdant",
+    name: "Studio Verdant",
+    role: "Family & lifestyle photographer",
+    specialty: "Family",
+    location: "Amsterdam, NL",
+    description: "Natural-light family sessions in the city, at home, or in the dunes.",
+    budget: "$1,400",
+    yearsExperience: 4,
+    rating: 4.9,
+    reviewCount: 86,
+    services: ["Family", "Newborn", "Maternity", "Lifestyle"],
+    availability: "Weekends only",
+    image: PHOTOS.portrait5,
+  },
+  {
+    id: "p8",
+    slug: "midnight-crowd",
+    name: "Midnight Crowd",
+    role: "Nightlife & club event photography",
+    specialty: "Nightlife",
+    location: "Mumbai, IN",
+    description: "Fast-turnaround floor coverage, promo edits, and social-ready highlight reels.",
+    budget: "$2,100",
+    yearsExperience: 7,
+    rating: 4.6,
+    reviewCount: 118,
+    services: ["Nightlife", "Club events", "Promo edits", "Social cuts"],
+    availability: "Booking now",
+    image: PHOTOS.portrait6,
+  },
 ];
 
 export const ACTIVITY = [

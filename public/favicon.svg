@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="dm-grad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4A7C6A" />
+      <stop offset="100%" stop-color="#1B3B2E" />
+    </linearGradient>
+    <linearGradient id="dm-ring" x1="16" y1="16" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#FDFBF7" stop-opacity="0.3" />
+    </linearGradient>
+    <radialGradient id="dm-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#A3D9C9" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#4A7C6A" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background squircle -->
+  <rect width="64" height="64" rx="18" fill="url(#dm-grad)" />
+
+  <!-- Subtle inner border highlight -->
+  <rect x="1" y="1" width="62" height="62" rx="17" stroke="white" stroke-opacity="0.18" stroke-width="1.5" />
+
+  <!-- Center lens glow -->
+  <circle cx="32" cy="32" r="18" fill="url(#dm-glow)" />
+
+  <!-- Camera lens / Aperture ring -->
+  <circle cx="32" cy="32" r="15" stroke="url(#dm-ring)" stroke-width="3" />
+
+  <!-- Center iris aperture core -->
+  <circle cx="32" cy="32" r="7.5" fill="#FDFBF7" />
+
+  <!-- Memory sparkle star at top-right -->
+  <path d="M46 12 C46 15 47.5 17 50.5 17 C47.5 17 46 19 46 22 C46 19 44.5 17 41.5 17 C44.5 17 46 15 46 12 Z" fill="#FDFBF7" />
+
+  <!-- Small accent glint -->
+  <circle cx="28.5" cy="28.5" r="2" fill="white" />
+</svg>

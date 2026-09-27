@@ -9,11 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UserDashboardRouteImport } from './routes/user-dashboard'
 import { Route as TemplatesRouteImport } from './routes/templates'
+import { Route as SignupRouteImport } from './routes/signup'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as DiscoverRouteImport } from './routes/discover'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as AlbumEditorRouteImport } from './routes/album-editor'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as UserDashboardIndexRouteImport } from './routes/user-dashboard.index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 import { Route as StudioSlugRouteImport } from './routes/studio.$slug'
 import { Route as EventSlugRouteImport } from './routes/event.$slug'
@@ -27,20 +32,43 @@ import { Route as DashboardContentRouteImport } from './routes/dashboard.content
 import { Route as DashboardBuilderRouteImport } from './routes/dashboard.builder'
 import { Route as DashboardBrandRouteImport } from './routes/dashboard.brand'
 import { Route as DashboardAnalyticsRouteImport } from './routes/dashboard.analytics'
+import { Route as UserDashboardAlbumsIndexRouteImport } from './routes/user-dashboard.albums.index'
 import { Route as DashboardEventsIndexRouteImport } from './routes/dashboard.events.index'
 import { Route as DashboardAlbumsIndexRouteImport } from './routes/dashboard.albums.index'
+import { Route as UserDashboardAlbumsNewRouteImport } from './routes/user-dashboard.albums.new'
+import { Route as UserDashboardAlbumsIdRouteImport } from './routes/user-dashboard.albums.$id'
 import { Route as DashboardEventsNewRouteImport } from './routes/dashboard.events.new'
 import { Route as DashboardEventsIdRouteImport } from './routes/dashboard.events.$id'
 import { Route as DashboardAlbumsIdRouteImport } from './routes/dashboard.albums.$id'
 
+const UserDashboardRoute = UserDashboardRouteImport.update({
+  id: '/user-dashboard',
+  path: '/user-dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TemplatesRoute = TemplatesRouteImport.update({
   id: '/templates',
   path: '/templates',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiscoverRoute = DiscoverRouteImport.update({
+  id: '/discover',
+  path: '/discover',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -57,6 +85,11 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const UserDashboardIndexRoute = UserDashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => UserDashboardRoute,
 } as any)
 const DashboardIndexRoute = DashboardIndexRouteImport.update({
   id: '/',
@@ -123,6 +156,12 @@ const DashboardAnalyticsRoute = DashboardAnalyticsRouteImport.update({
   path: '/analytics',
   getParentRoute: () => DashboardRoute,
 } as any)
+const UserDashboardAlbumsIndexRoute =
+  UserDashboardAlbumsIndexRouteImport.update({
+    id: '/albums/',
+    path: '/albums/',
+    getParentRoute: () => UserDashboardRoute,
+  } as any)
 const DashboardEventsIndexRoute = DashboardEventsIndexRouteImport.update({
   id: '/events/',
   path: '/events/',
@@ -132,6 +171,16 @@ const DashboardAlbumsIndexRoute = DashboardAlbumsIndexRouteImport.update({
   id: '/albums/',
   path: '/albums/',
   getParentRoute: () => DashboardRoute,
+} as any)
+const UserDashboardAlbumsNewRoute = UserDashboardAlbumsNewRouteImport.update({
+  id: '/albums/new',
+  path: '/albums/new',
+  getParentRoute: () => UserDashboardRoute,
+} as any)
+const UserDashboardAlbumsIdRoute = UserDashboardAlbumsIdRouteImport.update({
+  id: '/albums/$id',
+  path: '/albums/$id',
+  getParentRoute: () => UserDashboardRoute,
 } as any)
 const DashboardEventsNewRoute = DashboardEventsNewRouteImport.update({
   id: '/events/new',
@@ -153,8 +202,12 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/album-editor': typeof AlbumEditorRoute
   '/dashboard': typeof DashboardRouteWithChildren
+  '/discover': typeof DiscoverRoute
+  '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
+  '/signup': typeof SignupRoute
   '/templates': typeof TemplatesRoute
+  '/user-dashboard': typeof UserDashboardRouteWithChildren
   '/dashboard/analytics': typeof DashboardAnalyticsRoute
   '/dashboard/brand': typeof DashboardBrandRoute
   '/dashboard/builder': typeof DashboardBuilderRoute
@@ -168,16 +221,23 @@ export interface FileRoutesByFullPath {
   '/event/$slug': typeof EventSlugRoute
   '/studio/$slug': typeof StudioSlugRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/user-dashboard/': typeof UserDashboardIndexRoute
   '/dashboard/albums/$id': typeof DashboardAlbumsIdRoute
   '/dashboard/events/$id': typeof DashboardEventsIdRoute
   '/dashboard/events/new': typeof DashboardEventsNewRoute
+  '/user-dashboard/albums/$id': typeof UserDashboardAlbumsIdRoute
+  '/user-dashboard/albums/new': typeof UserDashboardAlbumsNewRoute
   '/dashboard/albums/': typeof DashboardAlbumsIndexRoute
   '/dashboard/events/': typeof DashboardEventsIndexRoute
+  '/user-dashboard/albums/': typeof UserDashboardAlbumsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/album-editor': typeof AlbumEditorRoute
+  '/discover': typeof DiscoverRoute
+  '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
+  '/signup': typeof SignupRoute
   '/templates': typeof TemplatesRoute
   '/dashboard/analytics': typeof DashboardAnalyticsRoute
   '/dashboard/brand': typeof DashboardBrandRoute
@@ -192,19 +252,27 @@ export interface FileRoutesByTo {
   '/event/$slug': typeof EventSlugRoute
   '/studio/$slug': typeof StudioSlugRoute
   '/dashboard': typeof DashboardIndexRoute
+  '/user-dashboard': typeof UserDashboardIndexRoute
   '/dashboard/albums/$id': typeof DashboardAlbumsIdRoute
   '/dashboard/events/$id': typeof DashboardEventsIdRoute
   '/dashboard/events/new': typeof DashboardEventsNewRoute
+  '/user-dashboard/albums/$id': typeof UserDashboardAlbumsIdRoute
+  '/user-dashboard/albums/new': typeof UserDashboardAlbumsNewRoute
   '/dashboard/albums': typeof DashboardAlbumsIndexRoute
   '/dashboard/events': typeof DashboardEventsIndexRoute
+  '/user-dashboard/albums': typeof UserDashboardAlbumsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/album-editor': typeof AlbumEditorRoute
   '/dashboard': typeof DashboardRouteWithChildren
+  '/discover': typeof DiscoverRoute
+  '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
+  '/signup': typeof SignupRoute
   '/templates': typeof TemplatesRoute
+  '/user-dashboard': typeof UserDashboardRouteWithChildren
   '/dashboard/analytics': typeof DashboardAnalyticsRoute
   '/dashboard/brand': typeof DashboardBrandRoute
   '/dashboard/builder': typeof DashboardBuilderRoute
@@ -218,11 +286,15 @@ export interface FileRoutesById {
   '/event/$slug': typeof EventSlugRoute
   '/studio/$slug': typeof StudioSlugRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/user-dashboard/': typeof UserDashboardIndexRoute
   '/dashboard/albums/$id': typeof DashboardAlbumsIdRoute
   '/dashboard/events/$id': typeof DashboardEventsIdRoute
   '/dashboard/events/new': typeof DashboardEventsNewRoute
+  '/user-dashboard/albums/$id': typeof UserDashboardAlbumsIdRoute
+  '/user-dashboard/albums/new': typeof UserDashboardAlbumsNewRoute
   '/dashboard/albums/': typeof DashboardAlbumsIndexRoute
   '/dashboard/events/': typeof DashboardEventsIndexRoute
+  '/user-dashboard/albums/': typeof UserDashboardAlbumsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -230,8 +302,12 @@ export interface FileRouteTypes {
     | '/'
     | '/album-editor'
     | '/dashboard'
+    | '/discover'
+    | '/login'
     | '/pricing'
+    | '/signup'
     | '/templates'
+    | '/user-dashboard'
     | '/dashboard/analytics'
     | '/dashboard/brand'
     | '/dashboard/builder'
@@ -245,16 +321,23 @@ export interface FileRouteTypes {
     | '/event/$slug'
     | '/studio/$slug'
     | '/dashboard/'
+    | '/user-dashboard/'
     | '/dashboard/albums/$id'
     | '/dashboard/events/$id'
     | '/dashboard/events/new'
+    | '/user-dashboard/albums/$id'
+    | '/user-dashboard/albums/new'
     | '/dashboard/albums/'
     | '/dashboard/events/'
+    | '/user-dashboard/albums/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/album-editor'
+    | '/discover'
+    | '/login'
     | '/pricing'
+    | '/signup'
     | '/templates'
     | '/dashboard/analytics'
     | '/dashboard/brand'
@@ -269,18 +352,26 @@ export interface FileRouteTypes {
     | '/event/$slug'
     | '/studio/$slug'
     | '/dashboard'
+    | '/user-dashboard'
     | '/dashboard/albums/$id'
     | '/dashboard/events/$id'
     | '/dashboard/events/new'
+    | '/user-dashboard/albums/$id'
+    | '/user-dashboard/albums/new'
     | '/dashboard/albums'
     | '/dashboard/events'
+    | '/user-dashboard/albums'
   id:
     | '__root__'
     | '/'
     | '/album-editor'
     | '/dashboard'
+    | '/discover'
+    | '/login'
     | '/pricing'
+    | '/signup'
     | '/templates'
+    | '/user-dashboard'
     | '/dashboard/analytics'
     | '/dashboard/brand'
     | '/dashboard/builder'
@@ -294,25 +385,40 @@ export interface FileRouteTypes {
     | '/event/$slug'
     | '/studio/$slug'
     | '/dashboard/'
+    | '/user-dashboard/'
     | '/dashboard/albums/$id'
     | '/dashboard/events/$id'
     | '/dashboard/events/new'
+    | '/user-dashboard/albums/$id'
+    | '/user-dashboard/albums/new'
     | '/dashboard/albums/'
     | '/dashboard/events/'
+    | '/user-dashboard/albums/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AlbumEditorRoute: typeof AlbumEditorRoute
   DashboardRoute: typeof DashboardRouteWithChildren
+  DiscoverRoute: typeof DiscoverRoute
+  LoginRoute: typeof LoginRoute
   PricingRoute: typeof PricingRoute
+  SignupRoute: typeof SignupRoute
   TemplatesRoute: typeof TemplatesRoute
+  UserDashboardRoute: typeof UserDashboardRouteWithChildren
   EventSlugRoute: typeof EventSlugRoute
   StudioSlugRoute: typeof StudioSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/user-dashboard': {
+      id: '/user-dashboard'
+      path: '/user-dashboard'
+      fullPath: '/user-dashboard'
+      preLoaderRoute: typeof UserDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/templates': {
       id: '/templates'
       path: '/templates'
@@ -320,11 +426,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemplatesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pricing': {
       id: '/pricing'
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/discover': {
+      id: '/discover'
+      path: '/discover'
+      fullPath: '/discover'
+      preLoaderRoute: typeof DiscoverRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -347,6 +474,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/user-dashboard/': {
+      id: '/user-dashboard/'
+      path: '/'
+      fullPath: '/user-dashboard/'
+      preLoaderRoute: typeof UserDashboardIndexRouteImport
+      parentRoute: typeof UserDashboardRoute
     }
     '/dashboard/': {
       id: '/dashboard/'
@@ -439,6 +573,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardAnalyticsRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/user-dashboard/albums/': {
+      id: '/user-dashboard/albums/'
+      path: '/albums'
+      fullPath: '/user-dashboard/albums/'
+      preLoaderRoute: typeof UserDashboardAlbumsIndexRouteImport
+      parentRoute: typeof UserDashboardRoute
+    }
     '/dashboard/events/': {
       id: '/dashboard/events/'
       path: '/events'
@@ -452,6 +593,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/dashboard/albums/'
       preLoaderRoute: typeof DashboardAlbumsIndexRouteImport
       parentRoute: typeof DashboardRoute
+    }
+    '/user-dashboard/albums/new': {
+      id: '/user-dashboard/albums/new'
+      path: '/albums/new'
+      fullPath: '/user-dashboard/albums/new'
+      preLoaderRoute: typeof UserDashboardAlbumsNewRouteImport
+      parentRoute: typeof UserDashboardRoute
+    }
+    '/user-dashboard/albums/$id': {
+      id: '/user-dashboard/albums/$id'
+      path: '/albums/$id'
+      fullPath: '/user-dashboard/albums/$id'
+      preLoaderRoute: typeof UserDashboardAlbumsIdRouteImport
+      parentRoute: typeof UserDashboardRoute
     }
     '/dashboard/events/new': {
       id: '/dashboard/events/new'
@@ -519,12 +674,34 @@ const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
   DashboardRouteChildren,
 )
 
+interface UserDashboardRouteChildren {
+  UserDashboardIndexRoute: typeof UserDashboardIndexRoute
+  UserDashboardAlbumsIdRoute: typeof UserDashboardAlbumsIdRoute
+  UserDashboardAlbumsNewRoute: typeof UserDashboardAlbumsNewRoute
+  UserDashboardAlbumsIndexRoute: typeof UserDashboardAlbumsIndexRoute
+}
+
+const UserDashboardRouteChildren: UserDashboardRouteChildren = {
+  UserDashboardIndexRoute: UserDashboardIndexRoute,
+  UserDashboardAlbumsIdRoute: UserDashboardAlbumsIdRoute,
+  UserDashboardAlbumsNewRoute: UserDashboardAlbumsNewRoute,
+  UserDashboardAlbumsIndexRoute: UserDashboardAlbumsIndexRoute,
+}
+
+const UserDashboardRouteWithChildren = UserDashboardRoute._addFileChildren(
+  UserDashboardRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AlbumEditorRoute: AlbumEditorRoute,
   DashboardRoute: DashboardRouteWithChildren,
+  DiscoverRoute: DiscoverRoute,
+  LoginRoute: LoginRoute,
   PricingRoute: PricingRoute,
+  SignupRoute: SignupRoute,
   TemplatesRoute: TemplatesRoute,
+  UserDashboardRoute: UserDashboardRouteWithChildren,
   EventSlugRoute: EventSlugRoute,
   StudioSlugRoute: StudioSlugRoute,
 }

@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, Check } from "lucide-react";
 import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { PHOTOS, TEMPLATES, TESTIMONIALS, EVENT_TYPES } from "@/lib/mock/data";
@@ -23,12 +24,8 @@ function Landing() {
       <SiteNav />
 
       {/* Hero — layered collage */}
-      <header className="relative pt-16 md:pt-24 pb-32 overflow-hidden">
+      <header className="relative pt-6 md:pt-10 pb-32 overflow-hidden">
         <div className="container mx-auto px-6 text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-border text-xs font-semibold uppercase tracking-widest text-emerald mb-8 animate-fade-up">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald" />
-            For modern photography studios
-          </div>
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-balance mb-6 animate-fade-up max-w-4xl mx-auto leading-[1.05]">
             Create Stunning Event Websites <br className="hidden md:block" />
             That People <span className="text-emerald italic font-serif font-normal">Never Forget</span>
@@ -116,7 +113,7 @@ function Landing() {
               <h3 className="text-xl font-bold mb-2">Digital Guestbooks</h3>
               <p className="text-sm text-warm-gray">Collect heartfelt messages alongside the photos.</p>
               <div className="mt-6 space-y-2">
-                <div className="bg-white/70 p-3 rounded-xl text-[11px] shadow-sm">"Best wedding ever 💚"</div>
+                <div className="bg-white/70 p-3 rounded-xl text-[11px] shadow-sm">"Best wedding ever"</div>
                 <div className="bg-white/70 p-3 rounded-xl text-[11px] translate-x-4 shadow-sm">"Beautiful photos, thank you!"</div>
                 <div className="bg-white/70 p-3 rounded-xl text-[11px] translate-x-2 shadow-sm">"We'll never forget this night."</div>
               </div>
@@ -208,17 +205,24 @@ function Landing() {
               <div className="text-xs font-bold uppercase tracking-widest text-emerald mb-3">Every kind of event</div>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight max-w-lg">From intimate to unforgettable</h2>
             </div>
-            <Link to="/templates" className="text-sm font-semibold text-emerald hover:underline">
-              Browse all templates →
+            <Link to="/templates" className="inline-flex items-center gap-1 text-sm font-semibold text-emerald hover:underline">
+              Browse all templates <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {EVENT_TYPES.map((t) => (
-              <div key={t.type} className={`${t.color} rounded-3xl p-6 aspect-square flex flex-col justify-between hover:-translate-y-1 transition-transform cursor-pointer`}>
-                <div className="text-3xl">{t.emoji}</div>
+              <div
+                key={t.type}
+                className={`group relative flex min-h-[176px] cursor-pointer flex-col justify-between gap-5 overflow-hidden rounded-[2rem] p-5 shadow-[0_8px_24px_rgba(45,42,41,0.05)] ring-1 ring-black/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_22px_45px_rgba(45,42,41,0.13)] sm:p-6 lg:aspect-square lg:min-h-0 ${t.color}`}
+              >
+                <div className="grid h-14 w-14 shrink-0 place-items-center rounded-[1.25rem] bg-white/80 shadow-[0_6px_16px_rgba(45,42,41,0.08)] ring-1 ring-white/80 backdrop-blur-sm transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110">
+                  <t.icon className="h-9 w-9 text-emerald-deep" strokeWidth={1.5} />
+                </div>
                 <div>
-                  <div className="font-bold">{t.type}</div>
-                  <div className="text-[11px] text-warm-gray mt-1">{t.description}</div>
+                  <div className="text-[15px] font-bold tracking-tight">{t.type}</div>
+                  <div className="mt-1 text-[11px] leading-snug text-warm-gray transition-colors group-hover:text-foreground/70">
+                    {t.description}
+                  </div>
                 </div>
               </div>
             ))}
@@ -315,7 +319,7 @@ function ZigzagRow({
         <ul className="space-y-3 text-sm font-medium mb-6">
           {bullets.map((b) => (
             <li key={b} className="flex items-center gap-3">
-              <div className="w-5 h-5 rounded-full bg-emerald/10 flex items-center justify-center text-emerald text-xs">✓</div>
+              <div className="w-5 h-5 rounded-full bg-emerald/10 flex items-center justify-center text-emerald"><Check className="w-3 h-3" strokeWidth={3} /></div>
               {b}
             </li>
           ))}

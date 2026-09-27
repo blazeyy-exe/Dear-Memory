@@ -178,6 +178,21 @@
   }
 }
 
+@keyframes float-particle {
+  0%, 100% {
+    transform: translateY(0) rotate(var(--rotation, 0deg));
+  }
+  25% {
+    transform: translateY(-12px) rotate(calc(var(--rotation, 0deg) + 4deg));
+  }
+  50% {
+    transform: translateY(-6px) rotate(calc(var(--rotation, 0deg) - 2deg));
+  }
+  75% {
+    transform: translateY(-14px) rotate(calc(var(--rotation, 0deg) + 2deg));
+  }
+}
+
 @layer base {
   * {
     border-color: var(--color-border);

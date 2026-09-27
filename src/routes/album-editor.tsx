@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { GripVertical } from "lucide-react";
 import { PHOTOS } from "@/lib/mock/data";
 
 export const Route = createFileRoute("/album-editor")({
@@ -43,7 +44,7 @@ function AlbumEditor() {
                   key={s}
                   className={`flex items-center gap-2 px-3 py-2 rounded-xl text-sm cursor-pointer ${s === "Gallery" ? "bg-emerald-light text-emerald-deep font-semibold" : "hover:bg-cream"}`}
                 >
-                  <span className="text-warm-gray text-xs">⋮⋮</span>
+                  <GripVertical className="w-3.5 h-3.5 shrink-0 text-warm-gray" />
                   {s}
                 </div>
               ))}

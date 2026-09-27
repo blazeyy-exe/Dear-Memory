@@ -168,10 +168,10 @@ export function AppShell({
     href === "/dashboard" ? pathname === "/dashboard" : pathname.startsWith(href);
 
   return (
-    <div className="min-h-screen bg-[#f0ece4]">
-      <div className="relative flex min-h-screen bg-[#faf8f5] shadow-[0_8px_48px_rgba(45,42,41,0.10)] md:m-4 md:rounded-[22px] overflow-hidden">
+    <div className="min-h-screen bg-[#F9F8F6]">
+      <div className="relative flex min-h-screen bg-[#F9F8F6]">
         {!hideSidebar && (
-          <aside className="hidden md:flex flex-col w-[220px] shrink-0 border-r border-[#e8e4de] h-[calc(100vh-2rem)] sticky top-4 bg-[#faf8f5]">
+          <aside className="hidden md:flex flex-col w-[220px] shrink-0 border-r border-[#e8e4de] h-screen sticky top-0 bg-[#F9F8F6]">
             <div className="px-5 py-5">
               <Wordmark />
             </div>
@@ -185,9 +185,9 @@ export function AppShell({
         )}
 
         {/* ── Main ─────────────────────────────────────────────────────────── */}
-        <main className="flex-1 min-w-0 flex flex-col">
+        <main className="flex-1 min-w-0 flex flex-col max-h-screen overflow-y-auto">
           {/* Header */}
-          <header className="sticky top-0 z-40 flex items-center justify-between gap-4 px-7 md:px-9 py-5 bg-[#faf8f5] border-b border-[#e8e4de]">
+          <header className="sticky top-0 z-40 flex items-center justify-between gap-4 px-7 md:px-9 py-5 bg-[#F9F8F6] border-b border-[#e8e4de]">
             <div className="flex items-center gap-4 min-w-0">
               {/* Mobile menu */}
               <div className="md:hidden">

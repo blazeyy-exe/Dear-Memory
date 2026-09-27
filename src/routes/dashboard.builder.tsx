@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { GripVertical, Redo2, Undo2 } from "lucide-react";
 import { AppShell } from "@/components/app/AppShell";
 import { PHOTOS } from "@/lib/mock/data";
 
@@ -16,8 +17,8 @@ function Builder() {
       subtitle="The Laurent Wedding · live preview"
       action={
         <div className="flex gap-2">
-          <button className="bg-white ring-1 ring-border px-4 py-2 rounded-full text-sm font-semibold">↶</button>
-          <button className="bg-white ring-1 ring-border px-4 py-2 rounded-full text-sm font-semibold">↷</button>
+          <button aria-label="Undo" className="inline-flex items-center bg-white ring-1 ring-border px-4 py-2 rounded-full text-sm font-semibold text-warm-gray hover:text-foreground"><Undo2 className="w-4 h-4" /></button>
+          <button aria-label="Redo" className="inline-flex items-center bg-white ring-1 ring-border px-4 py-2 rounded-full text-sm font-semibold text-warm-gray hover:text-foreground"><Redo2 className="w-4 h-4" /></button>
           <div className="bg-white ring-1 ring-border rounded-full p-1 flex gap-1">
             {["Desktop", "Tablet", "Mobile"].map((d, i) => (
               <button key={d} className={`px-3 py-1.5 rounded-full text-xs font-semibold ${i === 0 ? "bg-emerald text-white" : "text-warm-gray"}`}>{d}</button>
@@ -40,7 +41,7 @@ function Builder() {
           <div className="space-y-1">
             {SECTIONS.map((s) => (
               <div key={s} className={`flex items-center gap-2 px-3 py-2 rounded-xl text-sm cursor-pointer ${s === "Hero" ? "bg-emerald-light text-emerald-deep font-semibold" : "hover:bg-cream"}`}>
-                <span className="text-warm-gray text-xs">⋮⋮</span>
+                <GripVertical className="w-3.5 h-3.5 shrink-0 text-warm-gray" />
                 {s}
               </div>
             ))}
