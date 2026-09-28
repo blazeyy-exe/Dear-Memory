@@ -2,16 +2,16 @@
 // Server-side handlers for album CRUD operations.
 
 import { createServerFn } from "@tanstack/react-start";
+import { getCookies } from "@tanstack/react-start/server";
 import { z } from "zod";
 import { db, schema } from "@/lib/db";
 import { verifyToken, AUTH_COOKIE_NAME } from "@/lib/auth/utils";
 import { eq, desc, sql, and } from "drizzle-orm";
-import { parseCookies } from "vinxi/http";
 
 // ─── Auth helper ──────────────────────────────────────────────────────────────
 
 function getUserId(): string | null {
-  const cookies = parseCookies();
+  const cookies = getCookies();
   const token = cookies[AUTH_COOKIE_NAME];
   if (!token) return null;
   const payload = verifyToken(token);
@@ -116,7 +116,7 @@ export const createAlbum = createServerFn({ method: "POST" })
 
 // ─── Update album ─────────────────────────────────────────────────────────────
 
-export const updateAlbum = createServerFn({ method: "PATCH" })
+export const updateAlbum = createServerFn({ method: "POST" })
   .inputValidator(
     z.object({
       id: z.string(),
@@ -150,7 +150,7 @@ export const updateAlbum = createServerFn({ method: "PATCH" })
 
 // ─── Delete album ─────────────────────────────────────────────────────────────
 
-export const deleteAlbum = createServerFn({ method: "DELETE" })
+export const deleteAlbum = createServerFn({ method: "POST" })
   .inputValidator(z.object({ id: z.string() }))
   .handler(async ({ data }) => {
     const userId = getUserId();

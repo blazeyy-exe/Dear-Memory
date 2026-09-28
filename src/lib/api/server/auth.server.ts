@@ -3,11 +3,11 @@
 // database queries, and cookie management.
 
 import { createServerFn } from "@tanstack/react-start";
+import { getCookies, setCookie, deleteCookie } from "@tanstack/react-start/server";
 import { z } from "zod";
 import { db, schema } from "@/lib/db";
 import { hashPassword, verifyPassword, signToken, verifyToken, AUTH_COOKIE_NAME, AUTH_COOKIE_OPTIONS } from "@/lib/auth/utils";
 import { eq } from "drizzle-orm";
-import { parseCookies, setCookie, deleteCookie } from "vinxi/http";
 
 // ─── Signup ───────────────────────────────────────────────────────────────────
 
@@ -111,7 +111,7 @@ export const logout = createServerFn({ method: "POST" })
 
 export const getMe = createServerFn({ method: "GET" })
   .handler(async () => {
-    const cookies = parseCookies();
+    const cookies = getCookies();
     const token = cookies[AUTH_COOKIE_NAME];
 
     if (!token) {

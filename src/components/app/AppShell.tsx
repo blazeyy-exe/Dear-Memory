@@ -159,7 +159,7 @@ export function AppShell({
   title?: string;
   subtitle?: string;
   action?: ReactNode;
-  headerTabs?: { label: string; active?: boolean }[];
+  headerTabs?: { label: string; active?: boolean; href?: string }[];
   hideSidebar?: boolean;
 }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
